@@ -1,11 +1,13 @@
 import random
-import pickle
+#import pickle
 import re
+from gensim.models import FastText as FT
 
 wordnet = {}
-with open("wordnet.pickle", "rb") as f:
-	wordnet = pickle.load(f)
+#with open("wordnet.pickle", "rb") as f:
+#	wordnet = pickle.load(f)
 
+wordnet = FT.load_fasttext_format("wiki.ko.bin")
 
 # 한글만 남기고 나머지는 삭제
 def get_only_hangul(line):
